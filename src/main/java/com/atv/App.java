@@ -2,11 +2,8 @@ package com.atv;
 
 import java.util.Random;
 
-import javax.swing.JFrame;
-
+import com.atv.services.MathPlotShowResultsService;
 import com.atv.services.SystemWatchTimeService;
-
-import org.math.plot.Plot2DPanel;
 
 public class App {
   public static void main(String[] args) throws InterruptedException {
@@ -46,8 +43,6 @@ public class App {
 
         if (resultado == -1) {
           System.out.println("Não encontrado...");
-
-          continue;
         }
 
         watchTimeService.end();
@@ -60,15 +55,9 @@ public class App {
     }
 
     try {
-      var plot = new Plot2DPanel();
-      var frame = new JFrame("Comparativo Tempos de Execução");
+      var showResultsService = new MathPlotShowResultsService(resultsX, resultsY);
 
-      plot.addBarPlot("my plot", resultsX, resultsY);
-
-      frame.setContentPane(plot);
-      frame.setLocationRelativeTo(null);
-      frame.setSize(640, 480);
-      frame.setVisible(true);
+      showResultsService.show("Comparativo Tempos de Execução", "Comparativo Tempos de Execução");
     } catch (Exception e) {
       e.printStackTrace();
     }
