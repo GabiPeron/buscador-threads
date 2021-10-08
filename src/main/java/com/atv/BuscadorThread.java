@@ -1,12 +1,12 @@
 package com.atv;
 
-public class Buscador {
+public class BuscadorThread extends Thread {
   private int[] vet;
   private int alvo;
   private int resultado;
   public static boolean encontrou;
 
-  public Buscador(int[] vet, int alvo) {
+  public BuscadorThread(int[] vet, int alvo) {
     this.vet = vet;
     this.alvo = alvo;
     this.resultado = -1;
@@ -23,7 +23,8 @@ public class Buscador {
     }
   }
 
-  public void start() {
+  @Override
+  public void run() {
     for (int i = 0; i < this.vet.length; i++) {
       if (!encontrou) {
         if (this.vet[i] == alvo) {
@@ -31,10 +32,10 @@ public class Buscador {
 
           encontrou = true;
 
-          break;
+          interrupt();
         }
       } else {
-        break;
+        interrupt();
       }
     }
   }

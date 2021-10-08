@@ -5,7 +5,7 @@ import java.util.Random;
 import com.atv.services.MathPlotShowResultsService;
 import com.atv.services.SystemWatchTimeService;
 
-public class WithTheads {
+public class WithThreads {
   public static void main(String[] args) throws InterruptedException {
     int[] arraySizes = {100, 500, 1000, 5000};
     double resultsX[] = new double[4];
@@ -29,7 +29,7 @@ public class WithTheads {
         watchTimeService.start();
 
         for (int[] is : splitted) {
-          Buscador buscador = new Buscador(is, alvo);
+          BuscadorThread buscador = new BuscadorThread(is, alvo);
 
           buscador.start();
           buscador.join();
@@ -56,8 +56,9 @@ public class WithTheads {
 
     try {
       var showResultsService = new MathPlotShowResultsService(resultsX, resultsY);
+      var titleAndMessage = "Comparativo Tempos de Execução (com threads)";
 
-      showResultsService.show("Comparativo Tempos de Execução", "Comparativo Tempos de Execução");
+      showResultsService.show(titleAndMessage, titleAndMessage);
     } catch (Exception e) {
       e.printStackTrace();
     }
