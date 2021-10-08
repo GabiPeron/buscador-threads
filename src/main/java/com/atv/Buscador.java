@@ -1,3 +1,5 @@
+package com.atv;
+
 public class Buscador extends Thread {
     private int[] vet;
     private int alvo;
@@ -31,7 +33,7 @@ public class Buscador extends Thread {
                     encontrou = true;
 
                     interrupt();
-                } 
+                }
             } else {
                 interrupt();
             }

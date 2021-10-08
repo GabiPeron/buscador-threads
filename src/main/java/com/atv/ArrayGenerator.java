@@ -1,3 +1,5 @@
+package com.atv;
+
 import java.util.Random;
 
 public class ArrayGenerator {
