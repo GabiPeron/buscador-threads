@@ -5,7 +5,7 @@ import java.util.Random;
 import com.atv.services.MathPlotShowResultsService;
 import com.atv.services.SystemWatchTimeService;
 
-public class App {
+public class WithTheads {
   public static void main(String[] args) throws InterruptedException {
     int[] arraySizes = {100, 500, 1000, 5000};
     double resultsX[] = new double[4];
